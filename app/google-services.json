@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "148024089823",
+    "firebase_url": "https://testing123-eea1d-default-rtdb.firebaseio.com",
+    "project_id": "testing123-eea1d",
+    "storage_bucket": "testing123-eea1d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148024089823:android:4f2c673f8199afaaca9d6a",
+        "android_client_info": {
+          "package_name": "edu.inti.com.ninjacar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU_FfmkKUxaNWVrM95phEJLS4sEyS6_2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
