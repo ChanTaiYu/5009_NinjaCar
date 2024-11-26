@@ -13,7 +13,7 @@ public class Ride {
     private Boolean riderCompletionFlag = false;
     private Boolean driverCompletionFlag = false;
 
-    public Ride() {
+    public Ride(String rideToMall, String date) {
     }
 
     // Below constructor would be used while creating Ride offers by Drivers.
