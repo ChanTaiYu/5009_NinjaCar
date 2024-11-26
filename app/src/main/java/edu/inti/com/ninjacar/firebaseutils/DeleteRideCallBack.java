@@ -7,6 +7,8 @@ import edu.inti.com.ninjacar.datamodels.Ride;
  */
 public interface DeleteRideCallBack<Ride> {
 
+    void onDeleteRide(int rideId);
+
     /**
      * Called when a ride has been successfully deleted.
      *
