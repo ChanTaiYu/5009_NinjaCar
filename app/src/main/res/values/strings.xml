@@ -38,5 +38,7 @@
     <string name="title_home">Home</string>
     <string name="title_active_rides">Active Rides</string>
     <string name="title_completed_rides">Completed Rides</string>
+    <string name="no_completed_rides">No Completed Rides</string>
+    <string name="no_pending_rides">No Pending Rides</string>
 
 </resources>
