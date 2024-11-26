@@ -101,7 +101,7 @@ public class AdapterDisplayMyRidesFrag extends RecyclerView.Adapter<RecyclerView
                         }
                     });
                 }
-            });
+                });
 
             /*
             pendingRidesHolder.button_delete_ride.setOnClickListener(new View.OnClickListener() {
