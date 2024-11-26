@@ -1,5 +1,6 @@
 package edu.inti.com.ninjacar.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.inti.com.ninjacar.R;
 import edu.inti.com.ninjacar.activities.DriverActivity;
@@ -34,6 +36,9 @@ public class AdapterDisplayRides extends RecyclerView.Adapter{
     public AdapterDisplayRides(Context context, ArrayList<Ride> arrayList_rides) {
         this.context = context;
         this.arrayList_rides = arrayList_rides;
+    }
+
+    public AdapterDisplayRides(List<Ride> completedRidesList) {
     }
 
     // Method to update the data in the adapter
@@ -70,7 +75,7 @@ public class AdapterDisplayRides extends RecyclerView.Adapter{
     // 'position' would keep getting auto incremented by Android till all visible views in the Recycler View are filled.
     // 'position' would also be used by us to fetch data from the arrayList_rides one by one.
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Ride ride = arrayList_rides.get(position);
 
         // The same adapter is going to be used for displaying Ride Requests and Ride Offers.
@@ -87,46 +92,43 @@ public class AdapterDisplayRides extends RecyclerView.Adapter{
             rideRequestsViewHolder.tv_DestinationValue.setText(ride.getDestination());
             rideRequestsViewHolder.tv_RideRequestorValue.setText(ride.getRiderID());
 
-            rideRequestsViewHolder.button_acceptRideRequest.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO 1. First fetch the userID of the user who's logge
-                    //TODO 2. In the ride that is fetched, (in the ride variable), set the driver_id to currently logged in user.
-                    //TODO 3. Call the ride_request_accepted_success() method of the DriverActivity to display green snack bar message saying ride accepted.
-                    //TODO 4. Then Delete that particular inflater from the screen
+            rideRequestsViewHolder.button_acceptRideRequest.setOnClickListener(v -> {
+                //TODO 1. First fetch the userID of the user who's logge
+                //TODO 2. In the ride that is fetched, (in the ride variable), set the driver_id to currently logged in user.
+                //TODO 3. Call the ride_request_accepted_success() method of the DriverActivity to display green snack bar message saying ride accepted.
+                //TODO 4. Then Delete that particular inflater from the screen
 
-                    int adapterPosition = rideRequestsViewHolder.getAdapterPosition();
+                int adapterPosition = rideRequestsViewHolder.getAdapterPosition();
 
-                    ride.setDriverID(loggedInUserId);
-                    ((DriverActivity) context).ride_request_accepted_success();
-                    m_firebaseops_instance.acceptRide(ride, new CreateRideInDBCallback() {
-                        @Override
-                        public void onSuccess() {
-                            // Remove the accepted ride from the list and update the UI
-                            arrayList_rides.remove(position);
-                            notifyItemRemoved(position);
-                            notifyItemRangeChanged(position, arrayList_rides.size());
-                        }
+                ride.setDriverID(loggedInUserId);
+                ((DriverActivity) context).ride_request_accepted_success();
+                m_firebaseops_instance.acceptRide(ride, new CreateRideInDBCallback() {
+                    @Override
+                    public void onSuccess() {
+                        // Remove the accepted ride from the list and update the UI
+                        arrayList_rides.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, arrayList_rides.size());
+                    }
 
-                        @Override
-                        public void onFailure(String errorMessage) {
-                            // Show an error message
-                        }
-                    });
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        // Show an error message
+                    }
+                });
 
-                    m_firebaseops_instance.updateUserRidesList(loggedInUserId, ride.getRideId(), new CreateRideInDBCallback() {
-                        @Override
-                        public void onSuccess() {
+                m_firebaseops_instance.updateUserRidesList(loggedInUserId, ride.getRideId(), new CreateRideInDBCallback() {
+                    @Override
+                    public void onSuccess() {
 
-                        }
+                    }
 
-                        @Override
-                        public void onFailure(String errorMessage) {
+                    @Override
+                    public void onFailure(String errorMessage) {
 
-                        }
-                    });
+                    }
+                });
 
-                }
             });
 
         }
@@ -140,41 +142,38 @@ public class AdapterDisplayRides extends RecyclerView.Adapter{
             rideOffersViewHolder.tv_DestinationValue_offer.setText(ride.getDestination());
             rideOffersViewHolder.tv_RideOfferorValue.setText(ride.getDriverID());
 
-            rideOffersViewHolder.button_acceptRideOffer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO 1. First fetch the userID of the user who's logged in.
-                    //TODO 2. In the ride that is fetched, (variable 'ride'), set the rider_id to currently logged in user's ID.
-                    //TODO 3. Call the ride_offer_accepted_success() method of the RiderActivity to display green snack bar message saying ride accepted.
-                    //TODO 4. Then Delete that particular inflater from the screen
-                    ride.setRiderID(loggedInUserId);
-                    ((RiderActivity) context).ride_offer_accepted_success();
-                    m_firebaseops_instance.acceptRide(ride, new CreateRideInDBCallback() {
-                        @Override
-                        public void onSuccess() {
-                            // Remove the accepted ride from the list and update the UI
-                            arrayList_rides.remove(position);
-                            notifyItemRemoved(position);
-                            notifyItemRangeChanged(position, arrayList_rides.size());
-                        }
+            rideOffersViewHolder.button_acceptRideOffer.setOnClickListener(v -> {
+                //TODO 1. First fetch the userID of the user who's logged in.
+                //TODO 2. In the ride that is fetched, (variable 'ride'), set the rider_id to currently logged in user's ID.
+                //TODO 3. Call the ride_offer_accepted_success() method of the RiderActivity to display green snack bar message saying ride accepted.
+                //TODO 4. Then Delete that particular inflater from the screen
+                ride.setRiderID(loggedInUserId);
+                ((RiderActivity) context).ride_offer_accepted_success();
+                m_firebaseops_instance.acceptRide(ride, new CreateRideInDBCallback() {
+                    @Override
+                    public void onSuccess() {
+                        // Remove the accepted ride from the list and update the UI
+                        arrayList_rides.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, arrayList_rides.size());
+                    }
 
-                        @Override
-                        public void onFailure(String errorMessage) {
-                            // Show an error message
-                        }
-                    });
-                    m_firebaseops_instance.updateUserRidesList(loggedInUserId, ride.getRideId(), new CreateRideInDBCallback() {
-                        @Override
-                        public void onSuccess() {
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        // Show an error message
+                    }
+                });
+                m_firebaseops_instance.updateUserRidesList(loggedInUserId, ride.getRideId(), new CreateRideInDBCallback() {
+                    @Override
+                    public void onSuccess() {
 
-                        }
+                    }
 
-                        @Override
-                        public void onFailure(String errorMessage) {
+                    @Override
+                    public void onFailure(String errorMessage) {
 
-                        }
-                    });
-                }
+                    }
+                });
             });
         }
     }
