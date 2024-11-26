@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.inti.com.ninjacar.R;
-import edu.inti.com.ninjacar.adapters.RidesAdapter;
-import edu.inti.com.ninjacar.models.Ride;
+
+import edu.inti.com.ninjacar.datamodels.Ride;
 
 public class CompletedRidesFragment extends Fragment {
 
     private RecyclerView recyclerCompletedRides;
-    private RidesAdapter ridesAdapter;
+ 
     private List<Ride> completedRidesList;
 
     @Override
@@ -42,9 +42,8 @@ public class CompletedRidesFragment extends Fragment {
         // Load completed rides (dummy data for now)
         loadCompletedRides();
 
-        // Set up adapter
-        ridesAdapter = new RidesAdapter(completedRidesList);
-        recyclerCompletedRides.setAdapter(ridesAdapter);
+      
+       
     }
 
     private void loadCompletedRides() {
