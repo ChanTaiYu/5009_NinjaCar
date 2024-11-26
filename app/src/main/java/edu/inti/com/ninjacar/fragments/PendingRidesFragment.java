@@ -18,6 +18,7 @@ import java.util.List;
 import edu.inti.com.ninjacar.R;
 import edu.inti.com.ninjacar.adapters.PendingRidesAdapter;
 import edu.inti.com.ninjacar.datamodels.Ride;
+import edu.inti.com.ninjacar.firebaseutils.DeleteRideCallBack;
 
 public class PendingRidesFragment extends Fragment implements DeleteRideCallBack {
 
@@ -43,7 +44,7 @@ public class PendingRidesFragment extends Fragment implements DeleteRideCallBack
         loadPendingRides();
 
         // Set up adapter
-        pendingRidesAdapter = new PendingRidesAdapter(pendingRidesList, this);
+        pendingRidesAdapter = new PendingRidesAdapter(pendingRidesList, (PendingRidesAdapter.OnRideActionListener) this);
         recyclerPendingRides.setAdapter(pendingRidesAdapter);
     }
 
