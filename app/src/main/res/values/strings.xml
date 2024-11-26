@@ -38,9 +38,10 @@
     <string name="title_home">Home</string>
     <string name="title_active_rides">Active Rides</string>
     <string name="title_completed_rides">Completed Rides</string>
-    <string name="no_completed_rides">No Completed Rides</string>
-    <string name="no_pending_rides">No Pending Rides</string>
     <string name="completed_ride_date" />
     <string name="completed_ride_title" />
+    <string name="pending_ride_title" />
+    <string name="pending_ride_date" />
+    <string name="accept_button_lbl" />
 
 </resources>
