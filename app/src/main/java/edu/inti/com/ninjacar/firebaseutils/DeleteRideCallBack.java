@@ -20,4 +20,8 @@ public interface DeleteRideCallBack<Ride> {
      * @param errorMessage The error message explaining the failure.
      */
     void onDeleteError(String errorMessage);
+
+    void onSuccess();
+
+    void onFailure(String errorMessage);
 }
