@@ -40,5 +40,7 @@
     <string name="title_completed_rides">Completed Rides</string>
     <string name="no_completed_rides">No Completed Rides</string>
     <string name="no_pending_rides">No Pending Rides</string>
+    <string name="completed_ride_date" />
+    <string name="completed_ride_title" />
 
 </resources>
