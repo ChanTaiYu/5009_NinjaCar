@@ -1,5 +1,6 @@
 package edu.inti.com.ninjacar.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,7 +71,7 @@ public class AdapterDisplayMyRidesFrag extends RecyclerView.Adapter<RecyclerView
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Ride ride = arrayList_rides.get(position);
 
@@ -85,6 +86,16 @@ public class AdapterDisplayMyRidesFrag extends RecyclerView.Adapter<RecyclerView
                 @Override
                 public void onClick(View v) {
                     m_firebaseops_instance.deleteRide(ride.getRideId(), new DeleteRideCallBack() {
+                        @Override
+                        public void onRideDeleted(Object o) {
+
+                        }
+
+                        @Override
+                        public void onDeleteError(String errorMessage) {
+
+                        }
+
                         @Override
                         public void onSuccess() {
                             // Remove the ride from the list and notify the adapter
@@ -101,7 +112,7 @@ public class AdapterDisplayMyRidesFrag extends RecyclerView.Adapter<RecyclerView
                         }
                     });
                 }
-                });
+            });
 
             /*
             pendingRidesHolder.button_delete_ride.setOnClickListener(new View.OnClickListener() {
