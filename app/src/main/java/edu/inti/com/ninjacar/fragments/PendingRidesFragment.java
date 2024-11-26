@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.inti.com.ninjacar.R;
-import edu.inti.com.ninjacar.adapters.PendingRidesAdapter;
-import edu.inti.com.ninjacar.models.Ride;
+
+import edu.inti.com.ninjacar.datamodels.Ride;
 
 public class PendingRidesFragment extends Fragment implements DeleteRideCallBack {
 
     private RecyclerView recyclerPendingRides;
-    private PendingRidesAdapter pendingRidesAdapter;
+
     private List<Ride> pendingRidesList;
 
     @Override
@@ -43,8 +43,8 @@ public class PendingRidesFragment extends Fragment implements DeleteRideCallBack
         loadPendingRides();
 
         // Set up adapter
-        pendingRidesAdapter = new PendingRidesAdapter(pendingRidesList, this);
-        recyclerPendingRides.setAdapter(pendingRidesAdapter);
+
+
     }
 
     private void loadPendingRides() {
@@ -59,6 +59,6 @@ public class PendingRidesFragment extends Fragment implements DeleteRideCallBack
     public void onDeleteRide(int rideId) {
         // Handle ride deletion logic
         pendingRidesList.remove(rideId);
-        pendingRidesAdapter.notifyItemRemoved(rideId);
+
     }
 }
