@@ -18,6 +18,7 @@ import java.util.List;
 import edu.inti.com.ninjacar.R;
 
 import edu.inti.com.ninjacar.datamodels.Ride;
+import edu.inti.com.ninjacar.firebaseutils.DeleteRideCallBack;
 
 public class PendingRidesFragment extends Fragment implements DeleteRideCallBack {
 
@@ -59,6 +60,26 @@ public class PendingRidesFragment extends Fragment implements DeleteRideCallBack
     public void onDeleteRide(int rideId) {
         // Handle ride deletion logic
         pendingRidesList.remove(rideId);
+
+    }
+
+    @Override
+    public void onRideDeleted(Object o) {
+
+    }
+
+    @Override
+    public void onDeleteError(String errorMessage) {
+
+    }
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onFailure(String errorMessage) {
 
     }
 }
