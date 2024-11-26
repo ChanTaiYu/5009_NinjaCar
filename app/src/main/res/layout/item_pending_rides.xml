@@ -31,15 +31,6 @@
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
 
-        <Button
-            android:id="@+id/btn_accept_ride"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/accept_button_lbl"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white" />
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
