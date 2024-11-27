@@ -1,4 +1,4 @@
-package edu.inti.com.ninjacar.datamodels;
+package edu.inti.com.ninjacar.datamodels; 
  
 public class Ride {
     private String rideId;
