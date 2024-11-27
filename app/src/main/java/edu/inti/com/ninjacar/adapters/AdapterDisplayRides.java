@@ -1,4 +1,4 @@
-package edu.inti.com.ninjacar.adapters;
+package edu.inti.com.ninjacar.adapters; 
 
 import android.content.Context;
 import android.util.Log;
