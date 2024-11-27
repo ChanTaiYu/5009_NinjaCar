@@ -1,6 +1,6 @@
 package edu.inti.com.ninjacar.adapters;
 
-import android.annotation.SuppressLint;
+import android.annotation.SuppressLint; 
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
